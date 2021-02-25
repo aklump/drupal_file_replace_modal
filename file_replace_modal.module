@@ -18,7 +18,14 @@ function file_replace_modal_form_file_replace_form_alter(&$form, FormStateInterf
 /**
  * Implements hook_field_widget_FIELD_TYPE_form_alter().
  */
-function file_replace_modal_field_widget_file_generic_form_alter(&$element, FormStateInterface $form_state, $context) {
-  \Drupal::service('file_replace_modal.form')
-    ->widgetAlter($element, $context);
+function file_replace_modal_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+  $widget_id = $context['widget']->getPluginId();
+  switch ($widget_id) {
+    case 'file_generic':
+    case 'image_image':
+    case 'image_focal_point':
+      \Drupal::service('file_replace_modal.form')
+        ->widgetAlter($element, $context);
+      break;
+  }
 }
