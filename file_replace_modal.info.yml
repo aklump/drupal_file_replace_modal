@@ -1,8 +1,10 @@
-name: File Replace Modal
-description: Provides the File Replace form as a modal.
+name: 'File Replace Modal'
+description: 'Provides the File Replace form as a modal.'
 package: Media
 type: module
-core_version_requirement: ^8 || ^9
+core_version_requirement: '^8 || ^9'
 version: 8.x-0.0.1
 dependencies:
-  - drupal:file_replace
+  - 'drupal:file_replace'
+homepage: 'https://github.com/aklump/drupal_file_replace_modal'
+author: aklump
