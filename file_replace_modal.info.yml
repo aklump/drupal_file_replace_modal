@@ -3,7 +3,7 @@ description: 'Provides the File Replace form as a modal.'
 package: Media
 type: module
 core_version_requirement: '^8 || ^9'
-version: 8.x-0.0.2
+version: 8.x-0.0.3
 dependencies:
   - 'drupal:file_replace'
 homepage: 'https://github.com/aklump/drupal_file_replace_modal'
