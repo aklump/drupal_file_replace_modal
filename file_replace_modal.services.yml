@@ -1,0 +1,4 @@
+services:
+  file_replace_modal.form:
+    class: Drupal\file_replace_modal\Form\FileReplaceModalForm
+    arguments: [ '@entity_type.manager', '@messenger' ]
