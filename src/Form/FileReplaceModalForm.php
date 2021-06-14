@@ -129,11 +129,12 @@ class FileReplaceModalForm implements ContainerInjectionInterface {
     }
     $wrapper_entity = $context['items']->getParent()->getEntity();
     $url = $this->getModalFormUrl($file, $wrapper_entity);
-    $element += [
-      '#parents' => [$context['items']->getName(), $context['delta']],
-      '#multiple' => FALSE,
-    ];
-    $parents_prefix = implode('_', $element['#parents']);
+
+    $parents_prefix = implode('_', $element['#parents'] ?? [
+        $context['items']->getName(),
+        $context['delta'],
+      ]);
+    $is_multiple = $element['#multiple'] ?? FALSE;
 
     // Create an "Operations" element to open the replace modal.
     $element['replace_button'] = [
@@ -145,7 +146,7 @@ class FileReplaceModalForm implements ContainerInjectionInterface {
       // form though, I presume this is because bindAjaxLinks takes control of
       // the rendered HTML input element.
       '#type' => 'submit',
-      '#value' => $element['#multiple'] ? t('Replace selected') : t('Replace'),
+      '#value' => $is_multiple ? t('Replace selected') : t('Replace'),
 
       // These are necessary to leverage the AJAX modal API.  For more
       // information take a look at Drupal.ajax.bindAjaxLinks().
