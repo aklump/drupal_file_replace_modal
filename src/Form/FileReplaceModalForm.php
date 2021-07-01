@@ -7,7 +7,7 @@ use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\ReplaceCommand;
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Entity\EntityInterface;
-use Drupal\Core\Entity\EntityTypeManager;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Url;
@@ -21,7 +21,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class FileReplaceModalForm implements ContainerInjectionInterface {
 
   /**
-   * @var \Drupal\Core\Entity\EntityTypeManager
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
   protected $entityTypeManager;
 
@@ -33,10 +33,10 @@ class FileReplaceModalForm implements ContainerInjectionInterface {
   /**
    * FileReplaceModalForm constructor.
    *
-   * @param \Drupal\Core\Entity\EntityTypeManager $entity_type_manager
+   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    * @param \Drupal\Core\Messenger\MessengerInterface $messenger
    */
-  public function __construct(EntityTypeManager $entity_type_manager, MessengerInterface $messenger) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, MessengerInterface $messenger) {
     $this->entityTypeManager = $entity_type_manager;
     $this->messenger = $messenger;
   }
